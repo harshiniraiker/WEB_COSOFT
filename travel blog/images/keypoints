@@ -1,0 +1,14 @@
+use pixabay wikkipedia unsplash shutterstock for high resolution pics
+rgba(216, 216, 216, 1) 1 indicates transparency ranges from 0 to 1 
+0 is fully transparent
+hr tag is used for horizontal line
+&#10003; html entities, can use many entities by using unicode-table.com
+article > header {
+    ... 
+   navvigates the header of all the article
+}
+to select pseudo class eg. a:hover{}
+by entering ul>li , you get the entire ul syntax
+by entering ul>li*5 gives 5 ul lists
+
+block level elememts v/s inline eelememts
