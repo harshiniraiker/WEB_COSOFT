@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HPR - A Passionate Pursuit</title>
+    <style>
+        /* Theme Variables */
+        
+         :root {
+            --primary-color: #a574d7;
+            --secondary-color: #f57bfcbe;
+            --background-color: #650b68ac;
+            --text-color: #ddc5ed;
+            --accent-color: #E1BEE7;
+            --footer-background: rgba(44, 11, 60, 0.8);
+        }
+        
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            color: var(--text-color);
+            background: var(--background-color);
+        }
+        
+        .section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            min-height: 100vh;
+        }
+        
+        .header {
+            background: url('1st.jpg') no-repeat center center/cover;
+            height: 100vh;
+        }
+        
+        .header::after,
+        .about-section::after,
+        .skills-section::after,
+        .projects-section::after,
+        .resume-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+        
+        .header-content,
+        .about-content,
+        .skills-content,
+        .projects-content,
+        .resume-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header h1 {
+            font-size: 3.5em;
+            margin: 0;
+            color: var(--primary-color);
+        }
+        
+        .header p {
+            font-size: 1.5em;
+            margin: 10px 0;
+        }
+        
+        .buttons {
+            margin-top: 20px;
+        }
+        
+        .btn {
+            background: var(--primary-color);
+            color: var(--text-color);
+            border: none;
+            padding: 15px 30px;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1.2em;
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+        
+        .about-section,
+        .skills-section,
+        .projects-section,
+        .resume-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 50px;
+            background: var(--background-color);
+        }
+        
+        .about-content,
+        .skills-content,
+        .projects-content,
+        .resume-content {
+            display: flex;
+            max-width: 1200px;
+            width: 100%;
+        }
+        
+        .resume-bg {
+            background-image: url("resume.jpg");
+            width: 800px;
+            height: 800px;
+        }
+        
+        .text {
+            flex: 1;
+            padding: 20px;
+            text-align: left;
+        }
+        
+        .text h2 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .text p {
+            font-size: 1.5em;
+            line-height: 1.5;
+        }
+        
+        .image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .image img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+        
+        .skills-text,
+        .projects-text,
+        .resume-text {
+            flex: 1;
+            padding: 20px;
+            text-align: left;
+        }
+        
+        .skills-text h2,
+        .projects-text h2,
+        .resume-text h2 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .skills-list,
+        .projects-list {
+            list-style: none;
+            padding: 0;
+            counter-reset: item;
+            /* Initialize counter */
+        }
+        
+        .skills-list li,
+        .projects-list li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .skills-list li::before,
+        .projects-list li::before {
+            content: counter(item) ". ";
+            /* Use counter to display numbering */
+            counter-increment: item;
+            background: var(--primary-color);
+            color: white;
+            /* Text color for the numbering */
+            padding: 5px 10px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        
+        .skills-list li p,
+        .projects-list li p {
+            margin: 0;
+            font-size: 1.5em;
+        }
+        
+        .skills-icons,
+        .projects-image,
+        .resume-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .skills-icons img,
+        .projects-image img,
+        .resume-image img {
+            max-width: 70%;
+            border-radius: 10px;
+        }
+        
+        .footer {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: var(--footer-background);
+            padding: 5px 10px;
+            border-radius: 5px;
+            z-index: 2;
+        }
+        
+        .footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 1.2em;
+        }
+        
+        .page-footer {
+            width: 100%;
+            text-align: center;
+            padding: 20px;
+            background: var(--footer-background);
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            color: var(--text-color);
+            font-size: 1.2em;
+        }
+        
+        .section {
+            padding: 20px;
+            /* Optional: add some padding to the section */
+        }
+        
+        .contact-content {
+            position: relative;
+            /* Ensures the background box is positioned relative to this container */
+            padding: 20px;
+            /* Adds padding around the content */
+            max-width: 600px;
+            /* Sets a maximum width for the container */
+            margin: 0 auto;
+            /* Centers the container */
+            z-index: 1;
+            /* Ensures the content is above the background box */
+            color: rgb(15, 2, 2);
+            /* Sets the font color to black */
+            text-align: center;
+            font-size: 1.5em;
+        }
+        
+        .contact-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(82, 10, 79, 0.723);
+            /* Adjust background color and opacity */
+            z-index: 0;
+            /* Ensures the background box is behind the text */
+            border-radius: 10px;
+            /* Adds rounded corners to the background box */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            /* Adds a subtle shadow to the background box */
+            border: 100px;
+            align-items: center;
+            padding: 1.5em;
+        }
+        /* Additional styles for the text */
+        
+        .contact-content h2 {
+            margin-top: 0;
+            /* Removes default margin from the top of the heading */
+        }
+        
+        .contact-content p {
+            margin-bottom: 10px;
+            /* Adjusts the margin at the bottom of the paragraphs */
+        }
+        
+        .contact-content a {
+            text-decoration: none;
+            /* Removes underline from links */
+            color: black;
+            /* Sets link color to black */
+        }
+        
+        .contact-content a:hover {
+            text-decoration: underline;
+            /* Adds underline on hover */
+        }
+        
+        .thank-you-content {
+            position: relative;
+            /* Ensures the background box is positioned relative to this container */
+            padding: 20px;
+            /* Adds padding around the content */
+            max-width: 600px;
+            /* Sets a maximum width for the container */
+            margin: 0 auto;
+            /* Centers the container */
+            z-index: 1;
+            /* Ensures the content is above the background box */
+            color: rgb(15, 2, 2);
+            /* Sets the font color to black */
+            font-size: 1.5em;
+        }
+        
+        .thank-you-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(76, 18, 74, 0.723);
+            /* Adjust background color and opacity */
+            z-index: 0;
+            /* Ensures the background box is behind the text */
+            border-radius: 10px;
+            /* Adds rounded corners to the background box */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            /* Adds a subtle shadow to the background box */
+            border: 50px;
+            justify-items: center;
+        }
+        /* Additional styles for the text */
+        
+        .thank-you-content h2 {
+            margin-top: 0;
+            /* Removes default margin from the top of the heading */
+        }
+        
+        .thank-you-content p {
+            margin-bottom: 10px;
+            /* Adjusts the margin at the bottom of the paragraphs */
+        }
+        
+        .thank-you-content a {
+            text-decoration: none;
+            /* Removes underline from links */
+            color: black;
+            /* Sets link color to black */
+        }
+        
+        .thank-you-content a:hover {
+            text-decoration: underline;
+            /* Adds underline on hover */
+        }
+        /* Additional styles for the text */
+        
+        .thank-you-content h2 {
+            margin-top: 0;
+            /* Removes default margin from the top of the heading */
+        }
+        
+        .thank-you-content p {
+            margin-bottom: 10px;
+            /* Adjusts the margin at the bottom of the paragraphs */
+        }
+        
+        .thank-you-content a {
+            text-decoration: none;
+            /* Removes underline from links */
+            color: black;
+            /* Sets link color to black */
+        }
+        
+        .thank-you-content a:hover {
+            text-decoration: underline;
+            /* Adds underline on hover */
+        }
+        
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="section header">
+        <div class="header-content">
+            <h1>HPR - A Passionate Pursuit</h1>
+            <p>Honing my skills, pursuing my passions, and making an impact - that's the HPR way.</p>
+            <div class="buttons">
+                <a href="#" class="btn">Explore My Work</a>
+                <a href="#" class="btn btn-secondary">Get in Touch</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="section about-section">
+        <div class="about-content">
+            <div class="text">
+                <h2>About Me</h2>
+                <p>I'm a driven and versatile professional with a diverse skill set and a passion for making a difference.</p>
+                <p>I excel at project management, content creation, and strategic problem-solving. With several years of experience in the industry, I've honed my abilities to deliver exceptional results.</p>
+            </div>
+            <div class="image">
+                <img src="about me.jpeg" alt="About Me Image">
+            </div>
+        </div>
+    </div>
+
+    <div class="section skills-section">
+        <div class="skills-content">
+            <div class="skills-icons">
+                <img src="skills.jpeg" alt="Skills Icons">
+            </div>
+            <div class="skills-text">
+                <h2>My Skills</h2>
+                <ol class="skills-list">
+                    <li>
+                        <p><strong>Web Development</strong><br>Proficient in HTML, CSS, and JavaScript for building responsive and interactive websites.</p>
+                    </li>
+                    <br>
+                    <li>
+                        <p><strong>Programming</strong><br>Skilled in Java, Python, C, and C++ for developing robust and efficient applications.</p>
+                    </li>
+                    <br>
+                    <li>
+                        <p><strong>DevOps</strong><br>Experienced in automating and streamlining the software development process using various tools and technologies.</p>
+                    </li>
+                </ol>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="section projects-section">
+        <div class="projects-content">
+            <div class="projects-text">
+                <h2>My Projects</h2>
+                <ul class="projects-list">
+                    <li>
+                        <p><strong>Portfolio Website</strong><br>Designed and developed a personal portfolio website to showcase my skills and projects.</p>
+                    </li>
+                    <br>
+                    <li>
+                        <p><strong>Calculator Website</strong><br>Developed a user-friendly calculator with basic arithmetic operations (addition, subtraction, multiplication, division) ensuring smooth functionality and an appealing interface.</p>
+                    </li>
+                    <br>
+                    <li>
+                        <p><strong>Landing Page Website</strong><br>Created a visually compelling, responsive landing page with interactive elements to capture user interest and drive engagement.</p>
+                    </li>
+                    <br>
+                    <li>
+                        <p><strong>Bengaluru Here!</strong><br>Created a dynamic travel blog showcasing Bengaluru's best spots with engaging content, stunning visuals, and a responsive design. Enhanced user engagement with interactive features.</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="projects-image">
+                <img src="projects.png" alt="Projects Image">
+            </div>
+        </div>
+    </div>
+
+    <div class="section resume-section">
+        <div class="resume-bg">
+            <div class="resume-content">
+                <div class="resume-text">
+                    <h2>Resume</h2>
+                    <p>Download my resume to learn more about my skills, experiences, and professional background.</p>
+                    <a href="#" class="btn">Download Resume</a>
+                </div>
+                <!--<div class="resume-image">
+                <img src="resume.jpg" alt="Resume Image">
+            </div>-->
+            </div>
+        </div>
+    </div>
+
+    <div class="section contact-section">
+        <div class="section contact-section">
+            <div class="contact-content">
+                <div class="contact-background wrapper"></div>
+                <div>
+                    <h2>Get in Touch</h2>
+                    <p>Email: <u>xxx</u></p>
+                    <p>Phone: <u>yyy</u></p>
+                    <p>LinkedIn: <u><a href="https://www.linkedin.com/in/harshini-p-raiker-1417b2219">click_here</a></u></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section thank-you-section">
+            <div class="thank-you-content">
+                <div class="thank-you-background wrapper"></div>
+                <h2><i>Thank you</i></h2>
+                <p>for taking the time to explore my portfolio. I'm excited to continue growing and making a meaningful impact. Let's connect and discuss how I can contribute to your success.</p>
+                <p>© 2024 HPR. All rights reserved.</p>
+                <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
